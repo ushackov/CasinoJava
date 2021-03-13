@@ -46,11 +46,11 @@
       <artifactId>commons-math3</artifactId>
       <version>3.6</version>
     </dependency>
-    <!--<dependency>
+    <dependency>
       <groupId>com.github.ushackov</groupId>
       <artifactId>CasinoJava</artifactId>
-      <version>4a56a775</version>
-    </dependency>-->
+      <version>202eda1e</version>
+    </dependency>
 
   </dependencies>
 
