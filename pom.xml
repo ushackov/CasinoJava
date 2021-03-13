@@ -16,6 +16,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <maven.compiler.release>15</maven.compiler.release>
+    <com.github.ushackov>4a56a775</com.github.ushackov>
 
     <!--Libs-->
     <log4j-slf4j-impl.version>2.14.1</log4j-slf4j-impl.version>
@@ -46,12 +47,42 @@
       <artifactId>commons-math3</artifactId>
       <version>3.6</version>
     </dependency>
+    <dependency>
+      <groupId>com.github.ushackov</groupId>
+      <artifactId>CasinoJava</artifactId>
+      <version>4a56a775</version>
+    </dependency>
 
   </dependencies>
 
   <build>
 
     <plugins>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>3.13.0</version> <!-- or use version from pluginManagement -->
+        <configuration>
+          <rulesets>
+            <ruleset>/rulesets/java/quickstart.xml</ruleset>
+            <ruleset>d:\rulesets\my-ruleset.xml</ruleset>
+            <ruleset>http://localhost/design.xml</ruleset>
+          </rulesets>
+          <!-- failOnViolation is actually true by default, but can be disabled -->
+          <failOnViolation>true</failOnViolation>
+          <!-- printFailingErrors is pretty useful -->
+          <printFailingErrors>true</printFailingErrors>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
 
       <!-- COMPILER (Java10+ and lombok compatible) -->
       <plugin>
@@ -71,7 +102,6 @@
           </dependency>
         </dependencies>
       </plugin>
-
 
       <!-- JAR with dependencies -->
       <plugin>
@@ -172,7 +202,26 @@
 
     </plugins>
 
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-pmd-plugin</artifactId>
+          <version>3.13.0</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
   </build>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>3.13.0</version>
+      </plugin>
+    </plugins>
+  </reporting>
 
   <repositories>
     <repository>
